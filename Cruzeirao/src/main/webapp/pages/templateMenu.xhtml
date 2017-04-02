@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	lang="#{localeBean.language}"
+	>
+
+<f:view locale="#{localeBean.locale}">
+	<h:head>
+
+		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none; } </style>
+
+		<title>
+		   <ui:insert name="title">
+				<h:outputLabel value="AAA" />
+			</ui:insert>
+	    </title>
+	</h:head>
+
+	<h:body>
+
+		<p:layout id="globalLayout" fullPage="true">
+			<p:layoutUnit position="north" size="160">
+				<ui:include src="comuns/cabecalho.xhtml" />
+			</p:layoutUnit>
+			
+			<p:layoutUnit position="center">
+				<ui:include src="comuns/menu.xhtml" />
+				<ui:insert name="principal" />
+			</p:layoutUnit>
+		</p:layout>
+		
+		
+	</h:body>
+</f:view>
+</h:html>
+
+
+
+
+
+
+
