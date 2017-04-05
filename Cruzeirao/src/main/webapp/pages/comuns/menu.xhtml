@@ -10,54 +10,28 @@
 			<p:growl id="messages" />
 
 			<p:menubar>
-				<p:submenu label="Menu1" icon="ui-icon-document">
-					<p:submenu label="Menu1.1" icon="ui-icon-contact">
-						<p:menuitem value="Menu1.1.1" url="#" />
-						<p:menuitem value="Menu1.1.2" url="#" />
-					</p:submenu>
-					<p:menuitem value="Menu1.2" url="#" />
+				<p:submenu label="Eventos" icon="ui-icon-document">
+					<p:menuitem value="Calendário" url="#" />
 					<p:separator />
-					<p:menuitem value="Menu1.3" url="#" />
+					<p:menuitem value="Campeonatos" url="#" />
 				</p:submenu>
 
-				<p:submenu label="Menu2" icon="ui-icon-pencil">
-					<p:menuitem value="Menu2.1" url="#"
-						icon="ui-icon-arrowreturnthick-1-w" />
-					<p:menuitem value="Menu2.2" url="#"
-						icon="ui-icon-arrowreturnthick-1-e" />
+				<p:submenu label="Times" icon="ui-icon-pencil">
+					<p:menuitem value="Todos" url="#" />
+					<p:separator />
+					<p:menuitem value="Registrar" url="#" />
 				</p:submenu>
 
-				<p:submenu label="Menu3" icon="ui-icon-help">
-					<p:menuitem value="Menu3.1" url="#" />
-					<p:submenu label="Menu3.1.1" icon="ui-icon-search">
-						<p:submenu label="Menu3.1.1.1">
-							<p:menuitem value="Menu3.1.1.1.1" url="#" />
-						</p:submenu>
-						<p:menuitem value="Menu3.1.1.2" url="#" />
-					</p:submenu>
+				<p:submenu label="Perfil" icon="ui-icon-help">
+					<p:menuitem value="Visualizar" url="#" />
+					<p:separator />
+					<p:menuitem value="Editar" url="#" />
+					<p:separator />
+					<p:menuitem value="Mensagens" url="#" />
+					<p:separator />
 				</p:submenu>
 
-				<p:submenu label="Menu4" icon="ui-icon-gear">
-					<p:submenu label="Menu4.1" icon="ui-icon-refresh">
-						<p:menuitem value="Menu4.1.1" actionListener="#{menuView.save}"
-							icon="ui-icon-disk" update="messages" />
-						<p:menuitem value="Menu4.1.2" actionListener="#{menuView.update}"
-							icon="ui-icon-arrowrefresh-1-w" update="messages" />
-					</p:submenu>
-					<p:submenu label="Menu4.2" icon="ui-icon-newwin">
-						<p:menuitem value="Menu4.2.1" actionListener="#{menuView.delete}"
-							icon="ui-icon-close" update="messages" ajax="false" />
-					</p:submenu>
-				</p:submenu>
-
-				<p:menuitem value="Menu5" url="http://www.primefaces.org"
-					icon="ui-icon-close" />
-
-				<f:facet name="options">
-					<p:inputText style="margin-right:10px" placeholder="Search" />
-					<p:commandButton type="button" value="Logout"
-						icon="ui-icon-extlink" />
-				</f:facet>
+				<p:menuitem value="Entrar" url="#" icon="ui-icon-close" />
 
 			</p:menubar>
 		</h:form>
