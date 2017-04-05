@@ -38,7 +38,7 @@
             </p:panel>
         </p:tab> 
  
-        <p:tab id="documentos" title="Documentois">
+        <p:tab id="documentos" title="Documentos">
             <p:panel header="Documentos">
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
@@ -53,7 +53,7 @@
             </p:panel>
         </p:tab>
  
-        <p:tab id="confirm" title="Confirmation">
+        <p:tab id="confirm" title="Confirmação">
             <p:panel header="Confirmation">
                 <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                     <h:panelGrid columns="2" columnClasses="label, value">
@@ -68,7 +68,7 @@
                     </h:panelGrid>
                 </h:panelGrid>
  
-                <p:commandButton value="Confirmar" actionListener="#{userWizard.save}" update="growl" process="@this"/>
+                <p:commandButton value="Confirmar" actionListener="#{userWizard.save}" update="growl" process="@this" />
             </p:panel>
         </p:tab>
     </p:wizard>

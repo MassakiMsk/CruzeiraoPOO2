@@ -11,7 +11,7 @@
 
 			<p:menubar>
 				<p:submenu label="Eventos" icon="ui-icon-document">
-					<p:menuitem value="Calendário" url="#" />
+					<p:menuitem value="Calendário" url="home.xhtml" />
 					<p:separator />
 					<p:menuitem value="Campeonatos" url="#" />
 				</p:submenu>
@@ -31,7 +31,11 @@
 					<p:separator />
 				</p:submenu>
 
-				<p:menuitem value="Entrar" url="#" icon="ui-icon-close" />
+				<p:submenu label="Entrar" icon="ui-icon-pencil">
+					<p:menuitem value="Login" url="login.xhtml" />
+					<p:separator />
+					<p:menuitem value="Cadastrar" url="CadastroUsuario.xhtml"/>
+				</p:submenu>
 
 			</p:menubar>
 		</h:form>
