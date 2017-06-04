@@ -3,11 +3,15 @@ package sistema.modelos;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import sistema.enums.Sexo;
 
 @Entity
 public class Categoria {
@@ -24,7 +28,8 @@ public class Categoria {
 	private Campeonato campeonato;
 	private int minJogadores;
 	private int maxJogadores;
-	private Enum sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 	public int getCodigoCategoria() {
 		return codigoCategoria;
 	}
@@ -67,10 +72,10 @@ public class Categoria {
 	public void setMaxJogadores(int maxJogadores) {
 		this.maxJogadores = maxJogadores;
 	}
-	public Enum getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
-	public void setSexo(Enum sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 	public static long getSerialversionuid() {

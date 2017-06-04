@@ -1,10 +1,14 @@
 package sistema.modelos;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import sistema.enums.TipoUsuario;
 
 @Entity
 public class Inscrito {
@@ -13,7 +17,8 @@ public class Inscrito {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoInscrito;
 	
-	private Enum tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipo;
 	@ManyToOne
 	private Usuario usuario;
 	@ManyToOne
@@ -27,10 +32,10 @@ public class Inscrito {
 	public void setCodigoInscrito(int codigoInscrito) {
 		this.codigoInscrito = codigoInscrito;
 	}
-	public Enum getTipo() {
+	public TipoUsuario getTipo() {
 		return tipo;
 	}
-	public void setTipo(Enum tipo) {
+	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
 	}
 	public Usuario getUsuario() {

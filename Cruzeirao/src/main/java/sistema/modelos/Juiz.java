@@ -13,7 +13,7 @@ public class Juiz {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoJuiz;
 	
-	private Enum tipo;
+	//private Enum tipo;
 	private Usuario usuario;
 	public int getCodigoJuiz() {
 		return codigoJuiz;
@@ -21,12 +21,14 @@ public class Juiz {
 	public void setCodigoJuiz(int codigoJuiz) {
 		this.codigoJuiz = codigoJuiz;
 	}
+	/*
 	public Enum getTipo() {
 		return tipo;
 	}
 	public void setTipo(Enum tipo) {
 		this.tipo = tipo;
 	}
+	*/
 	public Usuario getUsuario() {
 		return usuario;
 	}
