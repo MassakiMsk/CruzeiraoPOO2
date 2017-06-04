@@ -6,7 +6,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
-	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components"
+	xmlns:pe="http://primefaces.org/ui/extensions" >
 
 	<ui:define name="title">
 		<h:outputText value="#{msg['pages.cadastroCampeonato.title']}" />
@@ -15,43 +16,47 @@
 
 	<ui:define name="principal">
 
-		<p:panel>
+			<h:form id="formCampeonato">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome: " />
+				<p:inputText value="#{campeonatoManagedBean.champ.nome}"
+					required="true" />
 
-			<h:form>
-				<h:panelGrid columns="2" id="dadosCampeonato">
+				<p:outputLabel value="Data Inicio Inscrição: " />
+				<p:inputMask  mask="99/99/9999"
+					value="#{campeonatoManagedBean.champ.dataInicioInscricao}"
+					required="true">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</p:inputMask>
 
-					<h:outputLabel value="#{msg['pages.cadastroCampeonato.name']}"></h:outputLabel>
-					<p:inputText id="nome" value="#{campeonato.nome}" label="Nome"
-						required="true" requiredMessage="#{msg['pages.cadastroCampeonato.nameMessage']}">
-					</p:inputText>
-					
-					<h:outputLabel value="#{msg['pages.cadastroCampeonato.cost']}"></h:outputLabel>
-					<p:inputText id="taxa" value="#{campeonato.taxa}" label="Taxa"
-						required="true" requiredMessage="#{msg['pages.cadastroCampeonato.costMessage']}">
-					</p:inputText>
+				<p:outputLabel value="Data Fim Inscrição: " />
+				<p:inputMask mask="99/99/9999"
+					value="#{campeonatoManagedBean.champ.dataFimFimInscricao}"
+					required="true">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</p:inputMask>
+				<p:outputLabel value="Data Inicio Campeonato " />
+				<p:inputMask mask="99/99/9999"
+					value="#{campeonatoManagedBean.champ.dataInicioCampeonato}"
+					required="true">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</p:inputMask>
 
-					<h:outputLabel value="#{msg['pages.cadastroCampeonato.startDate']}"></h:outputLabel>
-					<p:calendar locale="pt" showButtonPanel="true" navigator="true"
-						id="dataInicio" showOn="button">
-					</p:calendar>
-					
-					<h:outputLabel value="#{msg['pages.cadastroCampeonato.endDate']}"></h:outputLabel>
-					<p:calendar locale="pt" showButtonPanel="true" navigator="true"
-						id="dataTermino" showOn="button">
-					</p:calendar>
-					
-					<h:outputLabel value="#{msg['pages.cadastroCampeonato.openDate']}"></h:outputLabel>
-					<p:calendar locale="pt" showButtonPanel="true" navigator="true"
-						id="dataAbertura" showOn="button">
-					</p:calendar>
-					
-					<h:outputLabel value="#{msg['pages.cadastroCampeonato.closeDate']}"></h:outputLabel>
-					<p:calendar locale="pt" showButtonPanel="true" navigator="true"
-						id="dataFechamento" showOn="button">
-					</p:calendar>
-				</h:panelGrid>
-				<p:commandButton value="#{msg['pages.cadastroCampeonato.next']}" action="#{campeonato.prosseguir}"/>
-			</h:form>
-		</p:panel>
+				<p:outputLabel value="Data Fim Campeonato " />
+				<p:inputMask mask="99/99/9999" 
+					value="#{campeonatoManagedBean.champ.dataFimCampeonato}"
+					required="true">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</p:inputMask>
+
+				<p:outputLabel value="Valor Inscrição " />
+				<p:inputText value="#{campeonatoManagedBean.champ.valorTaxa}"
+					required="true"/>
+
+			</p:panelGrid>
+			<p:commandButton value="Salvar"
+				action="#{campeonatoManagedBean.save}"
+				update="formCampeonato" />
+		</h:form>
 	</ui:define>
 </ui:composition>
