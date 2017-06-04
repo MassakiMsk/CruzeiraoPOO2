@@ -1,0 +1,38 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Perfil" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+		<center>
+			<h3>Perfil</h3>
+		</center>
+		<div align="center">
+			<p:panelGrid columns="2">
+				<f:facet name="header">
+					<p:graphicImage library="sistema" name="imagens/no-image.jpg" />
+				</f:facet>
+
+				<h:outputText value="Nome:" />
+				<h:outputText value="??" />
+
+				<h:outputText value="Tipo de Usuário:" />
+				<h:outputText value="??" />
+
+				<h:outputText value="email:" />
+				<h:outputText value="??" />
+
+			</p:panelGrid>
+			</div>
+	</ui:define>
+</ui:composition>

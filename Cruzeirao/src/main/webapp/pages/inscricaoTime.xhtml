@@ -1,0 +1,57 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.inscricaoTime.title']}" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+
+		<h:form>
+			<p:growl id="msgs" showDetail="true" />
+
+
+			<h:panelGrid columns="2" cellpadding="5">
+				<h1>
+					<p:outputLabel value="#{msg['pages.inscricaoTime.selectTeam']}" />
+				</h1>
+				<br />
+				<p:selectOneMenu id="time" value="#{timeManagedBean.time}"
+					style="width:150px">
+					<f:selectItem itemLabel="#{msg['pages.inscricaoTime.team']}"
+						itemValue="" noSelectionOption="true" />
+					<f:selectItems value="#{UserWizard.documentos}" />
+				</p:selectOneMenu>
+				<br />
+				<h1>
+					<p:outputLabel
+						value="#{msg['pages.inscricaoTime.selectChampionship']}" />
+				</h1>
+				<br />
+				<p:selectOneMenu id="campeonato"
+					value="#{campeonatoManagedBean.campeonato}" style="width:150px">
+					<f:selectItem
+						itemLabel="#{msg['pages.inscricaoTime.championship']}"
+						itemValue="" noSelectionOption="true" />
+					<f:selectItems value="#{UserWizard.documentos}" />
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<p:commandButton value="#{msg['pages.inscricaoTime.Next']}"
+					update="msgs" action="#{timeManagedBean.prosseguir}"
+					icon="ui-icon-check" />
+
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,60 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroCategorias.title']}" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastroCategorias.category']}" />
+		</h1>
+
+
+
+		<h:form id="formCategorias">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="#{msg['pages.cadastroCategorias.category.name']}" />
+				<p:inputText value="#{Campeonato.categoria.nome}" />
+				<p:outputLabel value="#{msg['pages.cadastroCategorias.category.gender']}" />
+				<p:inputText value="#{Campeonato.categoria.genero}" />
+				<h:outputLabel value="#{msg['pages.cadastroCategorias.category.maxYear']}"></h:outputLabel>
+				<p:calendar locale="pt" showButtonPanel="true" navigator="true"
+					id="anoMaximo" showOn="button">
+				</p:calendar>
+			</p:panelGrid>
+			<br/>
+			<p:commandButton value="Adicionar"
+				action="#{Campeonato.addCategoria}"
+				update=":formCategorias, :tabelaCategorias" />
+		<br/>
+		<br/>
+		</h:form>
+
+		<p:dataTable value="#{Campeonato.categorias}" var="aux"
+			id="tabelaCategorias">
+			<p:column headerText="#{msg['pages.cadastroCategorias.category.name']}">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCategorias.category.gender']}">
+				<p:outputLabel value="#{aux.genero}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCategorias.category.maxYear']}">
+				<p:outputLabel value="#{aux.anoMax}" />
+			</p:column>
+
+		</p:dataTable>
+
+		<p:commandButton value="#{msg['pages.cadastroCategorias.next']}" action="#{campeonato.addCategoria}"></p:commandButton>
+
+	</ui:define>
+</ui:composition>

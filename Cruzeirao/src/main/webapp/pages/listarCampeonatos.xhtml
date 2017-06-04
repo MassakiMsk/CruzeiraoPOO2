@@ -1,0 +1,58 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.listarCampeonatos.title']}" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.listarCampeonatos.championships']}" />
+		</h1>
+
+		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
+			id="tabelaCampeonatos">
+			<p:column headerText="#{msg['pages.cadastroCampeonato.name']}">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.startDate']}">
+				<p:outputLabel value="#{aux.dataInicial}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.endDate']}">
+				<p:outputLabel value="#{aux.dataFinal}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.openDate']}">
+				<p:outputLabel value="#{aux.dataAbertura}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastroCampeonato.closeDate']}">
+				<p:outputLabel value="#{aux.dataFechamento}" />
+			</p:column>
+			<p:column headerText="#{msg['pages.listarCampeonatos.categories']}">
+				<p:dataTable value="#{aux.categorias}" var="cat"
+				id="tabelaCampeonatos">
+				<p:column headerText="#{msg['pages.cadastroCategorias.category.name']}">
+					<p:outputLabel value="#{cat.nome}" />
+				</p:column>
+				<p:column headerText="#{msg['pages.cadastroCategorias.category.maxYear']}">
+					<p:outputLabel value="#{cat.anoMaximo}" />
+				</p:column>
+				<p:column headerText="#{msg['pages.cadastroCategorias.category.gender']}">
+					<p:outputLabel value="#{cat.genero}" />
+				</p:column>
+				</p:dataTable>
+			</p:column>
+			
+		</p:dataTable>
+
+
+	</ui:define>
+</ui:composition>

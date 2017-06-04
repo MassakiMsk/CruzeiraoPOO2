@@ -1,0 +1,38 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.editarTime.title']}" />
+	</ui:define>
+
+	<h1>
+		<p:outputLabel value="#{msg['pages.editarTime.title']}" />
+	</h1>
+
+	<ui:define name="principal">
+
+		<h:form id="formTime">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="#{msg['pages.cadastroTime.team.name']}" />
+				<p:inputText value="#{timeManagedBean.time.nome}" />
+				<p:outputLabel value="#{msg['pages.cadastroTime.team.principal']}" />
+				<p:inputText value="#{timeManagedBean.time.diretor}" />
+				<tr>
+					<td><label for="imagem">#{msg['pages.cadastroTime.team.image']}</label></td>
+					<td><input type="file" name="imagem" /></td>
+				</tr>
+			</p:panelGrid>
+		</h:form>
+		<br />
+		<p:commandButton value="#{msg['pages.cadastroTime.next']}"
+			action="#{timeManagedBean.prosseguir}"></p:commandButton>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+		<p:graphicImage library="sistema" name="imagens/bola.jpg" alt="CCC"
+			title="#{msg['pages.comuns.cabecalho.title']}" />
+			
+		<h:form >
+            <p:outputLabel value="#{msg['pages.comuns.cabacalho.language']} "/>
+            
+            <p:selectOneMenu value="#{localeManagedBean.language}" onchange="submit()" >
+                <f:selectItem itemValue="en" itemLabel="English" />
+                <f:selectItem itemValue="pt" itemLabel="Português" />
+            </p:selectOneMenu>
+        </h:form>
+
+</ui:composition>

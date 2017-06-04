@@ -1,0 +1,130 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroUsuario.title']}" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+
+		<p:growl id="growl" sticky="true" showDetail="true" />
+		<h:form>
+			<p:wizard flowListener="#{userWizard.onFlowProcess}">
+				<p:tab id="usuario" title="#{msg['pages.cadastroUsuario.user']}">
+					<p:panel header="#{msg['pages.cadastroUsuario.user.info']}">
+						<p:messages />
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="#{msg['pages.cadastroUsuario.user.name']}" />
+							<p:inputText value="#{userWizard.user.nome}" required="true"
+								label="nome" />
+
+							<h:outputText value="#{msg['pages.cadastroUsuario.user.nick']}" />
+							<p:inputText value="#{userWizard.user.apelido}" required="true"
+								label="apelido" />
+
+							<h:outputText value="#{msg['pages.cadastroUsuario.user.pass']}" />
+							<p:inputText value="#{userWizard.user.senha}" required="true"
+								label="senha" />
+
+							<h:outputText value="#{msg['pages.cadastroUsuario.user.email']}" />
+							<p:inputText value="#{userWizard.user.email}" required="true"
+								label="email" />
+							<tr>
+								<td><label for="imagem">#{msg['pages.cadastroUsuario.user.image']}</label></td>
+								<td><input type="file" name="imagem" /></td>
+							</tr>
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="documentos"
+					title="#{msg['pages.cadastroUsuario.document']}">
+					<p:panel header="Documentos">
+						<p:messages />
+						<h:panelGrid columns="2" columnClasses="label, value">
+
+							<h:form>
+								<p:growl id="msgs" showDetail="true" />
+
+								<h:panelGrid columns="2" cellpadding="5">
+									<p:selectOneMenu id="country"
+										value="#{UserWizard.dv.documento}" style="width:150px">
+										<f:selectItem
+											itemLabel="#{msg['pages.cadastroUsuario.document.type']}"
+											itemValue="" noSelectionOption="true" />
+										<f:selectItems value="#{UserWizard.documentos}" />
+									</p:selectOneMenu>
+									<p:inputText value="#{UserWizard.dv.documento}" required="true"
+										label="documento" />
+
+									<p:commandButton
+										value="#{msg['pages.cadastroUsuario.document.add']}"
+										update="msgs" actionListener="#{UserWizard.dv.addDocumento}"
+										icon="ui-icon-check" />
+
+								</h:panelGrid>
+
+							</h:form>
+
+
+
+
+
+
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="confirm" title="#{msg['pages.cadastroUsuario.confirm']}">
+					<p:panel header="Confirmation">
+						<h:panelGrid id="confirmation" columns="3"
+							columnClasses="grid,grid,grid">
+							<h:panelGrid columns="2" columnClasses="label, value">
+								<h:outputText value="#{msg['pages.cadastroUsuario.user.name']}" />
+								<h:outputText value="#{userWizard.user.nome}"
+									styleClass="outputLabel" />
+
+								<h:outputText value="#{msg['pages.cadastroUsuario.user.nick']}" />
+								<h:outputText value="#{userWizard.user.apelido}"
+									styleClass="outputLabel" />
+
+								<h:outputText value="#{msg['pages.cadastroUsuario.user.email']}" />
+								<h:outputText value="#{userWizard.user.email}"
+									styleClass="outputLabel" />
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<!--Editar para mostrar documentos-->
+						<p:dataTable value="#{TimeManagedBean.time.document}" var="aux"
+							id="tabelaAluno">
+							<p:column
+								headerText="#{msg['pages.cadastroUsuario.document.type']}">
+								<p:outputLabel value="#{aux.matricula}" />
+							</p:column>
+							<p:column headerText="#{msg['pages.cadastroUsuario.document']}">
+								<p:outputLabel value="#{aux.nome}" />
+							</p:column>
+
+						</p:dataTable>
+
+
+					</p:panel>
+					<p:commandButton value="#{msg['pages.cadastroUsuario.next']}"
+						actionListener="#{userWizard.save}" update="growl" process="@this" />
+				</p:tab>
+			</p:wizard>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

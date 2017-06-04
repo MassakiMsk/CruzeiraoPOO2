@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:panelGrid columns="1" width="100%">
+
+
+		<h:form>
+			<p:growl id="messages" />
+
+			<p:menubar>
+				<p:menuitem value="#{msg['pages.comuns.menu.home']}" url="home.xhtml" />
+				<p:submenu label="#{msg['pages.comuns.menu.championship']}" icon="ui-icon-document">
+					<p:menuitem value="#{msg['pages.comuns.menu.championship.all']}" url="listarCampeonatos.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.championship.create']}" url="cadastroCampeonato.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.championship.sendProof']}" url="enviarComprovanteCampeonato.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.championship.key']}" url="chave.xhtml" />
+				</p:submenu>
+				
+				<p:menuitem value="partidas" url="visualizarPartidas.xhtml" />
+				
+				<p:submenu label="#{msg['pages.comuns.menu.places']}" icon="ui-icon-document">
+					<p:menuitem value="#{msg['pages.comuns.menu.places.all']}" url="listarLocais.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.places.new']}" url="cadastroLocais.xhtml" />
+					<p:separator />
+				</p:submenu>
+
+
+				<p:submenu label="#{msg['pages.comuns.menu.teams']}" icon="ui-icon-pencil">
+					<p:menuitem value="#{msg['pages.comuns.menu.team.all']}" url="listarTimes.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.team.create']}" url="cadastroTime.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.team.sendProof']}" url="enviarComprovanteTime.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.team.register']}" url="inscricaoTime.xhtml" />
+				</p:submenu>
+
+				<p:submenu label="#{msg['pages.comuns.menu.profile']}" icon="ui-icon-help">
+					<p:menuitem value="#{msg['pages.comuns.menu.profile.view']}" url="verPerfil.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.profile.edit']}" url="editarPerfil.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.profile.messages']}" url="verMensagens.xhtml" />
+					<p:separator />
+				</p:submenu>
+				
+				<p:submenu label="#{msg['pages.comuns.menu.admin']}" icon="ui-icon-pencil">
+					<p:menuitem value="#{msg['pages.comuns.menu.admin.confirmTeam']}" url="confirmarPagamentoTime.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.admin.confirmChampionship']}" url="confirmarPagamentoCampeonato.xhtml" />
+				</p:submenu>
+				
+				<p:submenu label="#{msg['pages.comuns.menu.login']}" icon="ui-icon-pencil">
+					<p:menuitem value="#{msg['pages.comuns.menu.login.login']}" url="login.xhtml" />
+					<p:separator />
+					<p:menuitem value="#{msg['pages.comuns.menu.login.signUp']}" url="CadastroUsuario.xhtml" />
+				</p:submenu>
+				
+			</p:menubar>
+		</h:form>
+
+	</h:panelGrid>
+</ui:composition>

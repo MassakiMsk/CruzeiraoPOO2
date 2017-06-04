@@ -1,0 +1,35 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Editar Perfil" />
+	</ui:define>
+
+
+	<ui:define name="principal">
+		<p:panel>
+
+			<h:form>
+				<h:panelGrid columns="2" id="dadosCampeonato">
+
+					<h:outputLabel value="Novo Nome"></h:outputLabel>
+					<p:inputText id="nome" value="" label="Nome">
+					</p:inputText>
+
+					<h:outputLabel value="Novo e-mail"></h:outputLabel>
+					<p:inputText id="email" value="" label="E-mail">
+					</p:inputText>
+					
+				</h:panelGrid>
+				<p:commandButton value="Continuar" action="#{campeonato.prosseguir}" />
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

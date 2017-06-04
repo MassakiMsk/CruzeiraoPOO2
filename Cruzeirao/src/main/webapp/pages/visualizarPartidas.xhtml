@@ -1,0 +1,68 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Partidas" />
+	</ui:define>
+
+	<ui:define name="principal">
+
+		<h:form id="form">
+			<p:dataGrid var="partida" value="#{dataGridView.partidas}"
+				columns="3" layout="grid" rows="12" paginator="true" id="partidas"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
+
+				<f:facet name="header">
+            Partidas
+        </f:facet>
+
+				<p:panel header="#{partida.dataHora}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+
+						<h:outputText value="#{partida.mandante} vs #{partida.visitante}" />
+
+						<p:commandLink update=":form:partidaDetail"
+							oncomplete="PF('carDialog').show()" title="Detalhes">
+							<h:outputText styleClass="ui-icon ui-icon-search"
+								style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{partida}"
+								target="#{dataGridView.selectedPartida}" />
+						</p:commandLink>
+					</h:panelGrid>
+				</p:panel>
+
+			</p:dataGrid>
+
+			<p:dialog header="Estatisticas" widgetVar="carDialog" modal="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="partidaDetail" style="text-align:center;">
+					<p:panelGrid columns="3"
+						rendered="#{not empty dataGridView.selectedPartida}"
+						columnClasses="label,value,value">
+
+						<h:outputText value="*" />
+						<h:outputText value="#{dataGridView.selectedPartida.mandante}" />
+						<h:outputText value="#{dataGridView.selectedPartida.visitante}" />
+
+						<h:outputText value="Gols" />
+						<h:outputText value="#{dataGridView.selectedPartida.golMandante}" />
+						<h:outputText value="#{dataGridView.selectedPartida.golVisitante}" />
+
+						<h:outputText value="Cartões:" />
+						<h:outputText value="#{dataGridView.selectedPartida.cartaoMandante}" />
+						<h:outputText value="#{dataGridView.selectedPartida.cartaoVisitante}" />
+
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
