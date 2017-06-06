@@ -1,6 +1,5 @@
 package sistema.modelos;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Equipe implements Serializable {
+public class Equipe {
 	private static final long serialVersionUID = 1L;
 
 	@Id

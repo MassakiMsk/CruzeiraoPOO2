@@ -1,22 +1,24 @@
 package sistema.modelos;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import sistema.enums.TipoUsuario;
+
 @Entity
-public class Inscrito implements Serializable {
+public class Inscrito {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigoInscrito;
-	@Enumerated
-	private Enum tipo;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipo;
 	@ManyToOne
 	private Usuario usuario;
 	@ManyToOne
@@ -30,10 +32,10 @@ public class Inscrito implements Serializable {
 	public void setCodigoInscrito(int codigoInscrito) {
 		this.codigoInscrito = codigoInscrito;
 	}
-	public Enum getTipo() {
+	public TipoUsuario getTipo() {
 		return tipo;
 	}
-	public void setTipo(Enum tipo) {
+	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
 	}
 	public Usuario getUsuario() {

@@ -1,11 +1,10 @@
 package sistema.modelos;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,9 +12,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Enumerated;
+
+import sistema.enums.Sexo;
+import sistema.enums.TipoUsuario;
 
 @Entity
-public class Usuario implements Serializable {
+public class Usuario {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,15 +34,16 @@ public class Usuario implements Serializable {
 	private List<Inscrito> inscricoes;
 	@OneToMany
 	private List<Campeonato> campeonatos;
-	//@Enumerated
-	//private Enum tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipo;
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
 	private String cpf;
 	private String cref;
-	private Enum sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 	private String foto;
 	public int getCodigoUsuario() {
 		return codigoUsuario;
@@ -83,10 +87,10 @@ public class Usuario implements Serializable {
 	public void setCampeonatos(List<Campeonato> campeonatos) {
 		this.campeonatos = campeonatos;
 	}
-	public Enum getTipo() {
+	public TipoUsuario getTipo() {
 		return tipo;
 	}
-	public void setTipo(Enum tipo) {
+	public void setTipo(TipoUsuario tipo) {
 		this.tipo = tipo;
 	}
 	public String getTelefoneFixo() {
@@ -125,10 +129,10 @@ public class Usuario implements Serializable {
 	public void setCref(String cref) {
 		this.cref = cref;
 	}
-	public Enum getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
-	public void setSexo(Enum sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 	public String getFoto() {

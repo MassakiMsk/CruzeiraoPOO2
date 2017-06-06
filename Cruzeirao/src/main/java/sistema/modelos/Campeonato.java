@@ -1,6 +1,5 @@
 package sistema.modelos;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Campeonato implements Serializable {
+public class Campeonato {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,7 +75,6 @@ public class Campeonato implements Serializable {
 	public void setDataFimInscricao(Date dataFimInscricao) {
 		this.dataFimInscricao = dataFimInscricao;
 	}
-	
 	public Date getDataInicioCampeonato() {
 		return dataInicioCampeonato;
 	}

@@ -1,9 +1,9 @@
 package sistema.modelos;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import sistema.enums.Sexo;
+
 @Entity
-public class Categoria implements Serializable {
+public class Categoria {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +28,8 @@ public class Categoria implements Serializable {
 	private Campeonato campeonato;
 	private int minJogadores;
 	private int maxJogadores;
-	@Enumerated
-	private Enum sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 	public int getCodigoCategoria() {
 		return codigoCategoria;
 	}
@@ -70,10 +72,10 @@ public class Categoria implements Serializable {
 	public void setMaxJogadores(int maxJogadores) {
 		this.maxJogadores = maxJogadores;
 	}
-	public Enum getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
-	public void setSexo(Enum sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 	public static long getSerialversionuid() {
