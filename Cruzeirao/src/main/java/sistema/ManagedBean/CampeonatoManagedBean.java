@@ -1,15 +1,12 @@
 package sistema.ManagedBean;
 
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import org.primefaces.event.RowEditEvent;
 
 import sistema.Service.CampeonatoService;
 import sistema.modelos.Campeonato;
-import java.util.ArrayList;
 
 
 @ManagedBean
@@ -17,7 +14,7 @@ import java.util.ArrayList;
 public class CampeonatoManagedBean {
 
 	private Campeonato champ = new Campeonato();
-	private List<Campeonato> champs = new ArrayList<Campeonato>();
+	private List<Campeonato> champs;
 	private CampeonatoService service = new CampeonatoService(); 
 	
 	
@@ -33,6 +30,7 @@ public class CampeonatoManagedBean {
 			champs.add(champ);
 		
 		champ = new Campeonato();
+		
 	}
 
 	public Campeonato getChamp() {

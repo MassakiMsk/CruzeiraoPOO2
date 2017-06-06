@@ -31,7 +31,7 @@
 
 				<p:outputLabel value="Data Fim Inscrição: " />
 				<p:inputMask mask="99/99/9999"
-					value="#{campeonatoManagedBean.champ.dataFimFimInscricao}"
+					value="#{campeonatoManagedBean.champ.dataFimInscricao}"
 					required="true">
 					<f:convertDateTime pattern="dd/MM/yyyy"/>
 					</p:inputMask>
@@ -56,7 +56,7 @@
 			</p:panelGrid>
 			<p:commandButton value="Salvar"
 				action="#{campeonatoManagedBean.save}"
-				update="formCampeonato" />
+				update=":formCampeonato" />
 		</h:form>
 	</ui:define>
 </ui:composition>
