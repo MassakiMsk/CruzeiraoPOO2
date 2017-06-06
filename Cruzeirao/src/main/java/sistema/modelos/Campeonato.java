@@ -76,6 +76,7 @@ public class Campeonato implements Serializable {
 	public void setDataFimInscricao(Date dataFimInscricao) {
 		this.dataFimInscricao = dataFimInscricao;
 	}
+	
 	public Date getDataInicioCampeonato() {
 		return dataInicioCampeonato;
 	}

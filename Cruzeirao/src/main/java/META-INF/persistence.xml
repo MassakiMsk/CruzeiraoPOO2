@@ -10,11 +10,11 @@
 	<class>sistema.modelos.Local</class>
 	<class>sistema.modelos.Usuario</class>
 	<properties>
-		<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DerbyDB;create=true"/>
-		<property name="javax.persistence.jdbc.password" value="abc"/>
+		<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/derbyfgf;create=true"/>
+		<property name="javax.persistence.jdbc.password" value="pwd"/>
 		<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
 		<property name="eclipselink.ddl-generation" value="create-tables"/>
-		<property name="javax.persistence.jdbc.user" value="cruzeirao"/>
+		<property name="javax.persistence.jdbc.user" value="user"/>
 	</properties>
 	</persistence-unit>
 </persistence>
