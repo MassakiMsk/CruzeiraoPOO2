@@ -15,6 +15,7 @@ import sistema.modelos.Usuario;
 public class UsuarioManagedBean {
 
 	private Usuario user = new Usuario();
+	private Usuario userAtual = new Usuario();
 	private List<Usuario> users;
 	private UsuarioService service = new UsuarioService(); 
 	
@@ -56,6 +57,16 @@ public class UsuarioManagedBean {
 	public String detailInfo(Usuario a){
 		user = a;
 		return "LINKPARAOOUTRO SITE";
+	}
+	
+	public String login() {
+		users = getUsers();
+		for(Usuario u:users){
+			if(userAtual.getNome().equals(u.getNome()) && userAtual.getSenha().equals(u.getSenha())){
+				return "home.xhtml";
+			}
+		}
+		return "home.xhtml";
 	}
 	
 }
