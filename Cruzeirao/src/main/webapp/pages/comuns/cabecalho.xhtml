@@ -6,16 +6,19 @@
 
 
 
-		<p:graphicImage library="sistema" name="imagens/bola.png" alt="CCC"
+	<center>
+		<p:graphicImage library="sistema" name="imagens/bola123.png" alt="CCC"
 			title="#{msg['pages.comuns.cabecalho.title']}" />
-			
-		<h:form >
-            <p:outputLabel value="#{msg['pages.comuns.cabacalho.language']} "/>
-            
-            <p:selectOneMenu value="#{localeManagedBean.language}" onchange="submit()" >
-                <f:selectItem itemValue="en" itemLabel="English" />
-                <f:selectItem itemValue="pt" itemLabel="Português" />
-            </p:selectOneMenu>
-        </h:form>
+	</center>
+	<h:form>
+		<center>
+			<p:outputLabel value="#{msg['pages.comuns.cabacalho.language']} " />
+			<p:selectOneMenu value="#{localeManagedBean.language}"
+				onchange="submit()">
+				<f:selectItem itemValue="en" itemLabel="English" />
+				<f:selectItem itemValue="pt" itemLabel="Português" />
+			</p:selectOneMenu>
+		</center>
+	</h:form>
 
 </ui:composition>

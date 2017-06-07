@@ -19,15 +19,78 @@
 			<p:outputLabel value="#{msg['pages.listarTimes.teams']}" />
 		</h1>
 
-		<p:dataTable value="#{timeManagedBean.getTimesPago()}" var="aux"
-			id="tabelaTimes">
-			<p:column headerText="#{msg['pages.cadastroTime.team.name']}">
-				<p:outputLabel value="#{aux.nome}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroTime.team.principal']}">
-				<p:outputLabel value="#{aux.diretor}" />
-			</p:column>
-		</p:dataTable>
+		<h:form id="formEquipes">
+
+			<p:dataTable value="#{equipeManagedBean.equis}" var="aux"
+				id="tabelaEquipe" editable="true" paginator="true" rows="5"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15"
+				emptyMessage="#{msg['pages.listarCampeonatos.filterMSG']}">
+
+				<p:ajax event="rowEdit" listener="#{equipeManagedBean.onRowEdit}"
+					update="tabelaEquipe" />
+
+				<p:column headerText="Codigo: "
+					filterBy="#{aux.codigoEquipe}">
+					<p:outputLabel value="#{aux.codigoEquipe}" />
+				</p:column>
+
+
+
+				<p:column headerText="Nome: "
+					filterBy="#{aux.nome}">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{aux.nome}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="equiNome" value="#{aux.nome}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Cidade: "
+					filterBy="#{aux.cidade}">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{aux.cidade}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="equiCidade" value="#{aux.cidade}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Data fundacao"
+					filterBy="#{aux.dataFundacao}" >
+					<p:outputLabel value="#{aux.dataFundacao}" />
+				</p:column>
+				
+				
+				
+
+				
+
+				<p:column style="width:70px"
+					headerText="#{msg['pages.listarCampeonatos.optionTable']}">
+
+					<p:rowEditor />
+
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{equipeManagedBean.delete(aux)}"
+						update="tabelaEquipe" />
+				</p:column>
+
+
+
+			</p:dataTable>
+
+		</h:form>
 
 
 	</ui:define>

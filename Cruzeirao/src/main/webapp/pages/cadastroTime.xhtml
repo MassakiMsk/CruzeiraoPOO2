@@ -15,25 +15,29 @@
 
 	<ui:define name="principal">
 
-		<h1>
-			<p:outputLabel value="#{msg['pages.cadastroTime.team']}" />
-		</h1>
-
-		<h:form id="formTime">
+		<h:form id="formEquipe">
 			<p:panelGrid columns="2">
-				<p:outputLabel value="#{msg['pages.cadastroTime.team.name']}" />
-				<p:inputText value="#{timeManagedBean.time.nome}" />
-				<p:outputLabel value="#{msg['pages.cadastroTime.team.principal']}" />
-				<p:inputText value="#{timeManagedBean.time.diretor}" />
-				<tr>
-					<td><label for="imagem">#{msg['pages.cadastroTime.team.image']}</label></td>
-					<td><input type="file" name="imagem" /></td>
-				</tr>
+			
+				<p:outputLabel value="Nome: " />
+				<p:inputText value="#{equipeManagedBean.equi.nome}"
+					required="true" />
+					
+				<p:outputLabel value="cidade: " />
+				<p:inputText value="#{equipeManagedBean.equi.cidade}"
+					required="true" />
+
+				<p:outputLabel value="Data Fundacao: " />
+				<p:inputMask  mask="99/99/9999"
+					value="#{equipeManagedBean.equi.dataFundacao}"
+					required="true">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</p:inputMask>
+
 			</p:panelGrid>
+			<p:commandButton value="Salvar"
+				action="#{equipeManagedBean.save}"
+				update=":formEquipe" />
 		</h:form>
-		<br />
-		<p:commandButton value="#{msg['pages.cadastroTime.next']}"
-			action="#{timeManagedBean.prosseguir}"></p:commandButton>
 
 	</ui:define>
 </ui:composition>
