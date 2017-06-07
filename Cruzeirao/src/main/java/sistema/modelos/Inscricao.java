@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 public class Inscricao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long numero;
+	private int numero;
 	
 	private boolean pagamento;
 	private boolean validada;
@@ -23,10 +23,10 @@ public class Inscricao {
 	private Categoria categoria;
 	@ManyToOne
 	private Equipe equipe;
-	public long getNumero() {
+	public int getNumero() {
 		return numero;
 	}
-	public void setNumero(long numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 	public boolean isPagamento() {
