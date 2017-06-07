@@ -23,7 +23,7 @@ public abstract class BaseDAO<T, I extends Serializable> {
 			emf = Persistence.createEntityManagerFactory("Cruzeirao");
 
 		// Usar CDI!!!!
-		em = emf.createEntityManager();
+		//em = emf.createEntityManager();
 	}
 
 	protected abstract Class<T> getClasseEntidade();

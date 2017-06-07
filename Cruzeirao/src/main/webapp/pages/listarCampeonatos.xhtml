@@ -16,42 +16,99 @@
 	<ui:define name="principal">
 
 		<h1>
-			<p:outputLabel value="#{msg['pages.listarCampeonatos.championships']}" />
+			<p:outputLabel
+				value="#{msg['pages.listarCampeonatos.championships']}" />
 		</h1>
 
-		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
-			id="tabelaCampeonatos">
-			<p:column headerText="#{msg['pages.cadastroCampeonato.name']}">
-				<p:outputLabel value="#{aux.nome}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.startDate']}">
-				<p:outputLabel value="#{aux.dataInicial}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.endDate']}">
-				<p:outputLabel value="#{aux.dataFinal}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.openDate']}">
-				<p:outputLabel value="#{aux.dataAbertura}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroCampeonato.closeDate']}">
-				<p:outputLabel value="#{aux.dataFechamento}" />
-			</p:column>
-			<p:column headerText="#{msg['pages.listarCampeonatos.categories']}">
-				<p:dataTable value="#{aux.categorias}" var="cat"
-				id="tabelaCampeonatos">
-				<p:column headerText="#{msg['pages.cadastroCategorias.category.name']}">
-					<p:outputLabel value="#{cat.nome}" />
+
+
+		<h:form id="formCampeonatos">
+
+			<p:dataTable value="#{campeonatoManagedBean.champs}" var="aux"
+				id="tabelaCampeonato" editable="true" paginator="true" rows="5"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15"
+				emptyMessage="#{msg['pages.listarCampeonatos.filterMSG']}">
+
+				<p:ajax event="rowEdit" listener="#{campeonatoManagedBean.onRowEdit}"
+					update="tabelaCampeonato" />
+
+				<p:column headerText="#{msg['pages.listarCampeonatos.codigoCampeonato']}"
+					filterBy="#{aux.codigoCampeonato}">
+					<p:outputLabel value="#{aux.codigoCampeonato}" />
 				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCategorias.category.maxYear']}">
-					<p:outputLabel value="#{cat.anoMaximo}" />
+
+
+
+				<p:column headerText="#{msg['pages.listarCampeonatos.nome']}"
+					filterBy="#{aux.nome}">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{aux.nome}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="campeonatoNome" value="#{aux.nome}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
-				<p:column headerText="#{msg['pages.cadastroCategorias.category.gender']}">
-					<p:outputLabel value="#{cat.genero}" />
+				
+				<p:column headerText="#{msg['pages.listarCampeonatos.dataInicioInscricao']}"
+					filterBy="#{aux.dataInicioInscricao}" >
+					<p:outputLabel value="#{aux.dataInicioInscricao}" />
 				</p:column>
-				</p:dataTable>
-			</p:column>
-			
-		</p:dataTable>
+				
+				<p:column headerText="#{msg['pages.listarCampeonatos.dataFimInscricao']}"
+					filterBy="#{aux.dataFimInscricao}">
+					<p:outputLabel value="#{aux.dataFimInscricao}" />
+				</p:column>
+				
+				<p:column headerText="#{msg['pages.listarCampeonatos.dataInicioCampeonato']}"
+					filterBy="#{aux.dataInicioCampeonato}">
+					<p:outputLabel value="#{aux.dataInicioCampeonato}" />
+				</p:column>
+
+				
+				<p:column headerText="#{msg['pages.listarCampeonatos.dataFimCampeonato']}"
+					filterBy="#{aux.dataFimCampeonato}">
+					<p:outputLabel value="#{aux.dataFimCampeonato}" />
+				</p:column>
+				
+				<p:column headerText="#{msg['pages.listarCampeonatos.valorTaxa']}"
+					filterBy="#{aux.valorTaxa}">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{aux.valorTaxa}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="campeonatoValorTaxa" value="#{aux.valorTaxa}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				
+
+				
+
+				<p:column style="width:70px"
+					headerText="#{msg['pages.listarCampeonatos.optionTable']}">
+
+					<p:rowEditor />
+
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{campeonatoManagedBean.delete(aux)}"
+						update="tabelaCampeonato" />
+				</p:column>
+
+
+
+			</p:dataTable>
+
+		</h:form>
 
 
 	</ui:define>

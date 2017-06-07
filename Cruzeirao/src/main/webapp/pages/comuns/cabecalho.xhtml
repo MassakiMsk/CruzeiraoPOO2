@@ -5,19 +5,17 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-	<center>
-		<p:graphicImage library="sistema" name="imagens/bola.jpg" alt="CCC"
+
+		<p:graphicImage library="sistema" name="imagens/bola.png" alt="CCC"
 			title="#{msg['pages.comuns.cabecalho.title']}" />
-	</center>
-
-	<h:form>
-		<p:outputLabel value="#{msg['pages.comuns.cabacalho.language']} " />
-
-		<p:selectOneMenu value="#{localeManagedBean.language}"
-			onchange="submit()">
-			<f:selectItem itemValue="en" itemLabel="English" />
-			<f:selectItem itemValue="pt" itemLabel="Português" />
-		</p:selectOneMenu>
-	</h:form>
+			
+		<h:form >
+            <p:outputLabel value="#{msg['pages.comuns.cabacalho.language']} "/>
+            
+            <p:selectOneMenu value="#{localeManagedBean.language}" onchange="submit()" >
+                <f:selectItem itemValue="en" itemLabel="English" />
+                <f:selectItem itemValue="pt" itemLabel="Português" />
+            </p:selectOneMenu>
+        </h:form>
 
 </ui:composition>
