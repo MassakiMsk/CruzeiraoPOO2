@@ -25,16 +25,16 @@
 						<p:focus />
 						<h:panelGrid id="panel" style="margin:3%; text-align: center">
 
-							<p:inputText type="text" id="username" autocomplete="off" size="30"
-								maxlength="80" label="#{msg['pages.login.user']}">
-								<p:watermark for="username" value="#{msg['pages.login.user']}" />
+							<p:inputText type="text" id="email" autocomplete="off" size="30"
+								maxlength="80" label="#{msg['pages.login.email']}">
+								<p:watermark for="email" value="#{msg['pages.login.email']}" />
 							</p:inputText>
 
 							<p:password  size="30" id="password" value="#{msg['pages.login.pass']}" maxlength="20">
 								<p:watermark for="password" value="#{msg['pages.login.pass']}" />
 							</p:password>
 
-							<p:commandButton value="#{msg['pages.login.enter']}" action="#{loginBean.login}" ajax="false"
+							<p:commandButton value="#{msg['pages.login.enter']}" action="#{usuarioManagedBean.login}" ajax="false"
 							    style="width: 50%; max-width: 200px;" />
 						</h:panelGrid>
 					</h:form>
