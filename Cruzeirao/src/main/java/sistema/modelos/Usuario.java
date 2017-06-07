@@ -25,6 +25,7 @@ public class Usuario {
 	private int codigoUsuario;
 	
 	private String email;
+	private String senha;
 	private String nome;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
@@ -56,6 +57,12 @@ public class Usuario {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}	
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	public String getNome() {
 		return nome;
