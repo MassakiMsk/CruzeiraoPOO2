@@ -30,29 +30,25 @@
 				<p:ajax event="rowEdit" listener="#{equipeManagedBean.onRowEdit}"
 					update="tabelaEquipe" />
 
-				<p:column headerText="Codigo: "
-					filterBy="#{aux.codigoEquipe}">
+				<p:column headerText="Codigo: " filterBy="#{aux.codigoEquipe}">
 					<p:outputLabel value="#{aux.codigoEquipe}" />
 				</p:column>
 
 
 
-				<p:column headerText="Nome: "
-					filterBy="#{aux.nome}">
+				<p:column headerText="Nome: " filterBy="#{aux.nome}">
 
 					<p:cellEditor>
 						<f:facet name="output">
 							<p:outputLabel value="#{aux.nome}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="equiNome" value="#{aux.nome}"
-								style="width:100%" />
+							<p:inputText id="equiNome" value="#{aux.nome}" style="width:100%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-				
-				<p:column headerText="Cidade: "
-					filterBy="#{aux.cidade}">
+
+				<p:column headerText="Cidade: " filterBy="#{aux.cidade}">
 
 					<p:cellEditor>
 						<f:facet name="output">
@@ -64,16 +60,22 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-				
-				<p:column headerText="Data fundacao"
-					filterBy="#{aux.dataFundacao}" >
+
+				<p:column headerText="Data fundacao" filterBy="#{aux.dataFundacao}">
 					<p:outputLabel value="#{aux.dataFundacao}" />
 				</p:column>
-				
-				
-				
 
-				
+
+
+				<p:column headerText="Campeonato: " filterBy="#{aux.campeonato}">
+					<p:selectOneMenu value="#{equipeManagedBean.equi.campeonato}"
+						converter="converterCampeonato">
+						<f:selectItem itemValue="" itemLabel="teste" />
+						<f:selectItems value="#{campeonatoManagedBean.champs}" var="aux"
+							itemValue="#{aux}" itemLabel="#{aux.nome}" />
+					</p:selectOneMenu>
+				</p:column>
+
 
 				<p:column style="width:70px"
 					headerText="#{msg['pages.listarCampeonatos.optionTable']}">

@@ -25,6 +25,14 @@ public class Equipe {
 	private String cidade;
 	@ManyToMany
 	private List<Usuario> diretores;
+	private Campeonato campeonato;
+	
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
+	}
 	public int getCodigoEquipe() {
 		return codigoEquipe;
 	}
