@@ -19,59 +19,69 @@
 			<p:outputLabel value="#{msg['pages.listarTimes.teams']}" />
 		</h1>
 
-		<h:form id="formEquipes">
+		<h:form id="formUsuarios">
 
-			<p:dataTable value="#{equipeManagedBean.equis}" var="aux"
-				id="tabelaEquipe" editable="true" paginator="true" rows="5"
+			<p:dataTable value="#{usuarioManagedBean.users}" var="aux"
+				id="tabelaUsuario" editable="true" paginator="true" rows="5"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
 				emptyMessage="#{msg['pages.listarCampeonatos.filterMSG']}">
 
-				<p:ajax event="rowEdit" listener="#{equipeManagedBean.onRowEdit}"
-					update="tabelaEquipe" />
+				<p:ajax event="rowEdit" listener="#{usuarioManagedBean.onRowEdit}"
+					update="tabelaUsuario" />
 
-				<p:column headerText="Codigo: " filterBy="#{aux.codigoEquipe}">
-					<p:outputLabel value="#{aux.codigoEquipe}" />
+				<p:column headerText="Codigo: " filterBy="#{aux.codigoUsuario}">
+					<p:outputLabel value="#{aux.codigoUsuario}" />
 				</p:column>
 
 
 
 				<p:column headerText="Nome: " filterBy="#{aux.nome}">
-
 					<p:cellEditor>
 						<f:facet name="output">
 							<p:outputLabel value="#{aux.nome}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="equiNome" value="#{aux.nome}" style="width:100%" />
+							<p:inputText id="userNome" value="#{aux.nome}" style="width:100%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="Cidade: " filterBy="#{aux.cidade}">
-
+				<p:column headerText="Email: " filterBy="#{aux.email}">
 					<p:cellEditor>
 						<f:facet name="output">
-							<p:outputLabel value="#{aux.cidade}" />
+							<p:outputLabel value="#{aux.email}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="equiCidade" value="#{aux.cidade}"
+							<p:inputText id="userEmail" value="#{aux.email}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Cpf: " filterBy="#{aux.cpf}">
+					<p:cellEditor>
+						<f:facet name="output">
+							<p:outputLabel value="#{aux.cpf}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="userCpf" value="#{aux.cpf}"
 								style="width:100%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="Data fundacao" filterBy="#{aux.dataFundacao}">
-					<p:outputLabel value="#{aux.dataFundacao}" />
+				<p:column headerText="Data nascimento" filterBy="#{aux.dataNascimento}">
+					<p:outputLabel value="#{aux.dataNascimento}" />
 				</p:column>
 
 
 
-				<p:column headerText="Campeonato: " filterBy="#{aux.campeonato}">
-					<p:selectOneMenu value="#{equipeManagedBean.equi.campeonato}"
-						converter="converterCampeonato">
+				<p:column headerText="Equipe: " filterBy="#{aux.equipe}">
+					<p:selectOneMenu value="#{usuarioManagedBean.user.equipe}"
+						converter="converterEquipe">
 						<f:selectItem itemValue="" itemLabel="Selecione um" />
-						<f:selectItems value="#{campeonatoManagedBean.champs}" var="aux"
+						<f:selectItems value="#{equipeManagedBean.equis}" var="aux"
 							itemValue="#{aux}" itemLabel="#{aux.nome}" />
 					</p:selectOneMenu>
 				</p:column>
@@ -84,8 +94,8 @@
 
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"
-						actionListener="#{equipeManagedBean.delete(aux)}"
-						update="tabelaEquipe" />
+						actionListener="#{usuarioManagedBean.delete(aux)}"
+						update="tabelaUsuario" />
 				</p:column>
 
 
