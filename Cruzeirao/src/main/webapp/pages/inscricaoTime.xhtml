@@ -12,46 +12,41 @@
 		<h:outputText value="#{msg['pages.inscricaoTime.title']}" />
 	</ui:define>
 
-
+	
 	<ui:define name="principal">
+	
+	
+	<h1>
+			<p:outputLabel value="#{msg['pages.listarTimes.teams']}" />
+		</h1>
 
-		<h:form>
-			<p:growl id="msgs" showDetail="true" />
+		<h:form id="formEquipe">
+			<p:panelGrid columns="2">
+			
+				<p:outputLabel value="Equipe: " />
+				<p:selectOneMenu value="#{inscricaoManagedBean.equipe}"
+						converter="converterEquipe">
+						<f:selectItem itemValue="" itemLabel="Selecione um" />
+						<f:selectItems value="#{equipeManagedBean.equis}" var="aux"
+							itemValue="#{aux}" itemLabel="#{aux.nome}" />
+					</p:selectOneMenu>
+			
+			<p:outputLabel value="Usuario: " />
+				<p:selectOneMenu value="#{inscricaoManagedBean.inscrito.usuario}"
+						converter="converterUsuario">
+						<f:selectItem itemValue="" itemLabel="Selecione um" />
+						<f:selectItems value="#{usuarioManagedBean.users}" var="aux"
+							itemValue="#{aux}" itemLabel="#{aux.nome}" />
+					</p:selectOneMenu>
 
-
-			<h:panelGrid columns="2" cellpadding="5">
-				<h1>
-					<p:outputLabel value="#{msg['pages.inscricaoTime.selectTeam']}" />
-				</h1>
-				<br />
-				<p:selectOneMenu id="time" value="#{timeManagedBean.time}"
-					style="width:150px">
-					<f:selectItem itemLabel="#{msg['pages.inscricaoTime.team']}"
-						itemValue="" noSelectionOption="true" />
-					<f:selectItems value="#{UserWizard.documentos}" />
-				</p:selectOneMenu>
-				<br />
-				<h1>
-					<p:outputLabel
-						value="#{msg['pages.inscricaoTime.selectChampionship']}" />
-				</h1>
-				<br />
-				<p:selectOneMenu id="campeonato"
-					value="#{campeonatoManagedBean.campeonato}" style="width:150px">
-					<f:selectItem
-						itemLabel="#{msg['pages.inscricaoTime.championship']}"
-						itemValue="" noSelectionOption="true" />
-					<f:selectItems value="#{UserWizard.documentos}" />
-				</p:selectOneMenu>
-				<br />
-				<br />
-				<p:commandButton value="#{msg['pages.inscricaoTime.Next']}"
-					update="msgs" action="#{timeManagedBean.prosseguir}"
-					icon="ui-icon-check" />
-
-			</h:panelGrid>
-
+			</p:panelGrid>
+			<p:commandButton value="Salvar"
+				action="#{inscricaoManagedBean.save}"
+				update=":formEquipe" />
 		</h:form>
 
+
+
+	
 	</ui:define>
 </ui:composition>

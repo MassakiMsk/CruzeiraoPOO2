@@ -1,25 +1,25 @@
-package converter;
+package sistema.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import sistema.modelos.Campeonato;
-import sistema.Service.CampeonatoService;
+import sistema.modelos.Equipe;
+import sistema.Service.EquipeService;
 
 
 
-@FacesConverter("converterCampeonato")
-public class CampeonatoConverter implements Converter {
+@FacesConverter("converterEquipe")
+public class EquipeConverter implements Converter {
 
-	private CampeonatoService servico = new CampeonatoService();
+	private EquipeService servico = new EquipeService();
 	
 	public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
 
 		
 		if (value != null && !value.isEmpty()) {
 			
-			  for(Campeonato f : servico.getChamps())
+			  for(Equipe f : servico.getEquis())
 				 if(f.getNome().equals(value))
 				  	return f;
 					
@@ -30,11 +30,11 @@ public class CampeonatoConverter implements Converter {
 	}
 
 	public String getAsString(FacesContext fc, UIComponent uic,
-			Object campeonato) {
-		if (campeonato == null || campeonato.equals("")) {
+			Object equipe) {
+		if (equipe == null || equipe.equals("")) {
 			return null;
 		} else {
-			return ((Campeonato) campeonato).getNome();
+			return ((Equipe) equipe).getNome();
 
 		}
 	}

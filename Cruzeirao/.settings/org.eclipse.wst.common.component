@@ -5,6 +5,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java/sistema/converter"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java/converter"/>
         <property name="context-root" value="Cruzeirao"/>
         <property name="java-output-path" value="/Cruzeirao/target/classes"/>
     </wb-module>

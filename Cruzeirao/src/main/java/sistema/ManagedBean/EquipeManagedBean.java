@@ -6,8 +6,9 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.event.RowEditEvent;
 
 import sistema.Service.EquipeService;
+import sistema.modelos.Campeonato;
 import sistema.modelos.Equipe;
-
+import sistema.ManagedBean.CampeonatoManagedBean;
 
 @ManagedBean
 @ViewScoped
@@ -32,7 +33,9 @@ public class EquipeManagedBean {
 		equi= new Equipe();
 		
 	}
+	
 
+	
 	public Equipe getEqui() {
 		return equi;
 	}
@@ -56,11 +59,5 @@ public class EquipeManagedBean {
 		equi= a;
 		return "LINKPARAOOUTRO SITE";
 	}
-	
-	
-	
-	
-	
-	
 	
 }

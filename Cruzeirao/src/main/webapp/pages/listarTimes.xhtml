@@ -67,15 +67,13 @@
 
 
 
-				<p:column headerText="Campeonato: " filterBy="#{aux.campeonato}">
-					<p:selectOneMenu value="#{equipeManagedBean.equi.campeonato}"
-						converter="converterCampeonato">
-						<f:selectItem itemValue="" itemLabel="Selecione um" />
-						<f:selectItems value="#{campeonatoManagedBean.champs}" var="aux"
-							itemValue="#{aux}" itemLabel="#{aux.nome}" />
+			<!-- 	<p:column headerText="Jogadores: " filterBy="#{usuarioManagedBean.user}">
+					<p:selectOneMenu value="#{usuarioManagedBean.user}"
+						converter="converterUsuario">
+						<f:selectItems value="#{inscricaoManagedBean.jogadores(aux)}" var="a"
+							itemValue="#{a}" itemLabel="#{a.nome}" />
 					</p:selectOneMenu>
-				</p:column>
-
+				</p:column> -->
 
 				<p:column style="width:70px"
 					headerText="#{msg['pages.listarCampeonatos.optionTable']}">

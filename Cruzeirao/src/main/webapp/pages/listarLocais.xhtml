@@ -21,14 +21,9 @@
 
 		<p:dataTable value="#{localManagedBean.locais}" var="aux"
 			id="tabelaCampeonatos">
-			<p:column headerText="#{msg['pages.cadastroLocais.place.name']}">
-				<p:outputLabel value="#{aux.nome}" />
-			</p:column>
 			<p:column headerText="#{msg['pages.cadastroLocais.place.adress']}">
-			</p:column>
-			<p:column headerText="#{msg['pages.cadastroLocais.place.capacity']}">
-				<p:outputLabel value="#{aux.capacidade}" />
-			</p:column>	
+				<p:outputLabel value="#{aux.endereco}" />
+				</p:column>
 		</p:dataTable>
 
 

@@ -96,4 +96,27 @@ public class Campeonato {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + codigoCampeonato;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campeonato other = (Campeonato) obj;
+		if (codigoCampeonato != other.codigoCampeonato)
+			return false;
+		return true;
+	}
+	
+	
+	
 }

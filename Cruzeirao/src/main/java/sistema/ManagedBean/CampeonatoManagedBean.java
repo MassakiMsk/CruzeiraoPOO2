@@ -7,6 +7,7 @@ import org.primefaces.event.RowEditEvent;
 
 import sistema.Service.CampeonatoService;
 import sistema.modelos.Campeonato;
+import sistema.modelos.Categoria;
 
 
 @ManagedBean
@@ -14,6 +15,7 @@ import sistema.modelos.Campeonato;
 public class CampeonatoManagedBean {
 
 	private Campeonato champ = new Campeonato();
+	private Categoria categoriaSelecionada;
 	private List<Campeonato> champs;
 	private CampeonatoService service = new CampeonatoService(); 
 	
@@ -40,7 +42,12 @@ public class CampeonatoManagedBean {
 	public void setChamp(Campeonato champ) {
 		this.champ = champ;
 	}
-
+	public Categoria getCategoriaSelecionada() {		
+		return categoriaSelecionada;
+	}
+	public void setCategoriaSelecionada(Categoria categoriaSelecionada) {
+		this.categoriaSelecionada = categoriaSelecionada;
+	}
 	public List<Campeonato> getChamps() {
 		if (champs == null)
 			champs = service.getChamps();

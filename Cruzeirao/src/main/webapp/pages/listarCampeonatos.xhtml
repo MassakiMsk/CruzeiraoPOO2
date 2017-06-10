@@ -20,8 +20,6 @@
 				value="#{msg['pages.listarCampeonatos.championships']}" />
 		</h1>
 
-
-
 		<h:form id="formCampeonatos">
 
 			<p:dataTable value="#{campeonatoManagedBean.champs}" var="aux"
@@ -30,10 +28,12 @@
 				rowsPerPageTemplate="5,10,15"
 				emptyMessage="#{msg['pages.listarCampeonatos.filterMSG']}">
 
-				<p:ajax event="rowEdit" listener="#{campeonatoManagedBean.onRowEdit}"
+				<p:ajax event="rowEdit"
+					listener="#{campeonatoManagedBean.onRowEdit}"
 					update="tabelaCampeonato" />
 
-				<p:column headerText="#{msg['pages.listarCampeonatos.codigoCampeonato']}"
+				<p:column
+					headerText="#{msg['pages.listarCampeonatos.codigoCampeonato']}"
 					filterBy="#{aux.codigoCampeonato}">
 					<p:outputLabel value="#{aux.codigoCampeonato}" />
 				</p:column>
@@ -53,28 +53,36 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-				
-				<p:column headerText="#{msg['pages.listarCampeonatos.dataInicioInscricao']}"
-					filterBy="#{aux.dataInicioInscricao}" >
-					<p:outputLabel value="#{aux.dataInicioInscricao}" />
-				</p:column>
-				
-				<p:column headerText="#{msg['pages.listarCampeonatos.dataFimInscricao']}"
-					filterBy="#{aux.dataFimInscricao}">
-					<p:outputLabel value="#{aux.dataFimInscricao}" />
-				</p:column>
-				
-				<p:column headerText="#{msg['pages.listarCampeonatos.dataInicioCampeonato']}"
-					filterBy="#{aux.dataInicioCampeonato}">
-					<p:outputLabel value="#{aux.dataInicioCampeonato}" />
+
+				<p:column
+					headerText="#{msg['pages.listarCampeonatos.dataInicioInscricao']}">
+					<p:outputLabel value="#{aux.dataInicioInscricao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:outputLabel>
 				</p:column>
 
-				
-				<p:column headerText="#{msg['pages.listarCampeonatos.dataFimCampeonato']}"
-					filterBy="#{aux.dataFimCampeonato}">
-					<p:outputLabel value="#{aux.dataFimCampeonato}" />
+				<p:column
+					headerText="#{msg['pages.listarCampeonatos.dataFimInscricao']}">
+					<p:outputLabel value="#{aux.dataFimInscricao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:outputLabel>
 				</p:column>
-				
+
+				<p:column
+					headerText="#{msg['pages.listarCampeonatos.dataInicioCampeonato']}">
+					<p:outputLabel value="#{aux.dataInicioCampeonato}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:outputLabel>
+				</p:column>
+
+
+				<p:column
+					headerText="#{msg['pages.listarCampeonatos.dataFimCampeonato']}">
+					<p:outputLabel value="#{aux.dataFimCampeonato}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:outputLabel>
+				</p:column>
+
 				<p:column headerText="#{msg['pages.listarCampeonatos.valorTaxa']}"
 					filterBy="#{aux.valorTaxa}">
 
@@ -88,10 +96,67 @@
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
-				
-				
 
-				
+
+
+
+
+
+				<p:column>
+					<p:dataList value="#{aux.categorias}" var="cat" type="ordered"
+						itemType="none" paginator="false">
+						<p:commandLink
+							update=":formCampeonatos:tabelaCampeonato:catDetail"
+							oncomplete="PF('catDialog').show()" title="Ver detalhes"
+							styleClass="ui-icon ui-icon-search"
+							style="float:left;margin-right:10px">
+							<f:setPropertyActionListener value="#{cat}"
+								target="#{campeonatoManagedBean.categoriaSelecionada}" />
+							<h:outputText value="#{cat.nome}" />
+						</p:commandLink>
+						<h:outputText value="#{cat.nome}" style="display:inline-block" />
+					</p:dataList>
+					<p:dialog header="catDetail" widgetVar="catDialog"
+						showEffect="blind" hideEffect="explode" resizable="true">
+						<p:outputPanel id="catDetail" style="text-align:center;">
+							<p:panelGrid columns="2"> 
+								
+
+								<h:outputText value="Código:" />
+								<h:outputText
+									value="#{campeonatoManagedBean.categoriaSelecionada.codigoCategoria}" />
+
+								<h:outputText value="Ano mínimo de nascimento: " />
+								<h:outputText
+									value="#{campeonatoManagedBean.categoriaSelecionada.nascidosApartirDe}" />
+
+								<h:outputText value="Gênero:" />
+								<h:outputText
+									value="#{campeonatoManagedBean.categoriaSelecionada.sexo}" />
+
+								<h:outputText value="Mínimo de jogadores: " />
+								<h:outputText
+									value="#{campeonatoManagedBean.categoriaSelecionada.minJogadores}" />
+
+								<h:outputText value="Máximo de jogadores: " />
+								<h:outputText
+									value="#{campeonatoManagedBean.categoriaSelecionada.maxJogadores}" />
+							</p:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+
+				</p:column>
+
+
+
+
+
+
+
+
+
+
 
 				<p:column style="width:70px"
 					headerText="#{msg['pages.listarCampeonatos.optionTable']}">
@@ -105,11 +170,9 @@
 				</p:column>
 
 
-
 			</p:dataTable>
 
 		</h:form>
-
 
 	</ui:define>
 </ui:composition>

@@ -1,22 +1,39 @@
 package sistema.ManagedBean;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
 import org.primefaces.event.RowEditEvent;
 
 import sistema.Service.InscricaoService;
+import sistema.modelos.Equipe;
 import sistema.modelos.Inscricao;
-
+import sistema.modelos.Inscrito;
+import sistema.modelos.Usuario;
 
 @ManagedBean
 @ViewScoped
 public class InscricaoManagedBean {
-
-	private Inscricao inscri = new Inscricao();
-	private List<Inscricao> inscris;
+	private Inscricao inscricao = new Inscricao();
+	private List<Inscricao> inscricaos;
+	private Inscrito inscrito = new Inscrito();
 	private InscricaoService service = new InscricaoService(); 
+	private Equipe equipe = new Equipe();
 	
+	
+	public ArrayList<Usuario> jogadores(Equipe e) {
+		ArrayList<Usuario> a = new ArrayList<Usuario>();
+		for(Inscricao i : inscricaos) {
+			if(i.getEquipe().equals(e))
+				for(Inscrito u : i.getInscritos())
+				a.add(u.getUsuario());
+		}
+		
+		return a;
+	}
 	
 	public void onRowEdit(RowEditEvent event) {
 
@@ -24,43 +41,52 @@ public class InscricaoManagedBean {
 		service.update(a);
 	}
 	public void save() {
-		inscri = service.save(inscri);
+		inscricao.setEquipe(equipe);
+		inscricao.getInscritos().add(inscrito);
+		equipe = new Equipe();
+		inscrito = new Inscrito();
+		inscricao = service.save(inscricao);
 		
-		if (inscris != null) 
-			inscris.add(inscri);
+		if (inscricaos != null) 
+			inscricaos.add(inscricao);
 		
-		inscri = new Inscricao();
+		inscricao = new Inscricao();
 		
 	}
 
-	public Inscricao getInscri() {
-		return inscri;
+	public Inscrito getInscrito() {
+		return inscrito;
+	}
+	public void setInscrito(Inscrito inscrito) {
+		this.inscrito = inscrito;
+	}
+	public Equipe getEquipe() {
+		return equipe;
+	}
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+	public Inscricao getInscricao() {
+		return inscricao;
 	}
 
-	public void setInscri(Inscricao inscri) {
-		this.inscri = inscri;
+	public void setInscricao(Inscricao inscricao) {
+		this.inscricao = inscricao;
 	}
 
-	public List<Inscricao> getInscris() {
-		if (inscris == null)
-			inscris = service.getInscris();
-		return inscris;
+	public List<Inscricao> getInscricaos() {
+		if (inscricaos == null)
+			inscricaos = service.getInscricaos();
+		return inscricaos;
 	}
 
 	public void delete(Inscricao a) {
 		service.remove(a);
-		inscris.remove(a);
+		inscricaos.remove(a);
 	}
 	
 	public String detailInfo(Inscricao a){
-		inscri = a;
+		inscricao = a;
 		return "LINKPARAOOUTRO SITE";
 	}
-	
-	
-	
-	
-	
-	
-	
 }
